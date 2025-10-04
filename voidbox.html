@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Void Box — Kid-Made Jewelry, Keychains & Prints</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #2a1f35;
+      --bg-2: #4a2f6b;
+      --bg-3: #6a4b9a;
+      --card: #ffffff;
+      --ink: #1c1324;
+      --muted: #544861;
+      --accent: #7a5cff;
+      --accent-2: #ff7ad9;
+      --ring: #b8abff;
+      --shadow: 0 10px 30px rgba(30, 10, 50, .28);
+      --radius: 18px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(1200px 800px at 10% -10%, var(--bg-3), transparent 60%),
+        radial-gradient(1200px 800px at 110% 0%, var(--bg-2), transparent 60%),
+        linear-gradient(180deg, var(--bg-1), #1b1422 60%, #140f19);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .35;
+      background-image:
+        radial-gradient(2px 2px at 12% 22%, #fff, transparent 60%),
+        radial-gradient(2px 2px at 78% 12%, #fff, transparent 60%),
+        radial-gradient(2px 2px at 32% 68%, #fff, transparent 60%),
+        radial-gradient(1.5px 1.5px at 62% 42%, #fff, transparent 60%),
+        radial-gradient(1.5px 1.5px at 15% 85%, #fff, transparent 60%),
+        radial-gradient(1.5px 1.5px at 90% 70%, #fff, transparent 60%);
+      animation: twinkle 9s linear infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        filter: opacity(.35)
+      }
+
+      50% {
+        filter: opacity(.7) blur(.2px)
+      }
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin-inline: auto;
+      padding: clamp(16px, 3vw, 28px);
+    }
+
+    /* === Navbar === */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 14px;
+      margin-top: 12px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .24), rgba(255, 255, 255, .12));
+      border: 1px solid rgba(255, 255, 255, .18);
+      backdrop-filter: blur(8px);
+      transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 26px rgba(0, 0, 0, .25);
+    }
+
+    .nav.dim {
+      opacity: .45
+    }
+
+    .nav:hover {
+      opacity: 1
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none
+    }
+
+    .logo {
+      width: 38px;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+
+    }
+
+    .brand-name {
+      color: #fff;
+      font-weight: 700;
+      font-family: Fredoka, Inter;
+      letter-spacing: .3px
+    }
+
+    nav ul {
+      display: flex;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: 10px
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, .16)
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #1d1230;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--ring);
+    }
+
+    /* === HERO === */
+    .hero {
+      margin-top: 28px;
+      display: grid;
+      gap: 16px;
+      text-align: center
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: #fff;
+      font-family: Fredoka, Inter;
+      font-size: clamp(28px, 4.2vw, 48px);
+      line-height: 1.1;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    .hero p {
+      color: #efe9ff;
+      max-width: 65ch;
+      margin: 0 auto 12px
+    }
+
+    .hero .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .hero-banner {
+      position: relative;
+      overflow: visible;
+    }
+
+    .hero-frame {
+      height: 500px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mascot {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: min(110px, 18vw);
+      transform: rotate(8deg);
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, .25));
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* === Category cards === */
+    section {
+      margin: clamp(28px, 6vw, 70px) 0
+    }
+
+    h2 {
+      font-family: Fredoka, Inter;
+      font-size: clamp(22px, 3.1vw, 34px);
+      color: #fff;
+      margin: 0 0 10px
+    }
+
+    .cats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px
+    }
+
+    .cat {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px;
+      border: 1px solid rgba(20, 10, 40, .06);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      transition: transform .15s ease, box-shadow .15s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(30, 10, 50, .28)
+    }
+
+    .cat.active {
+      outline: 3px solid var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(30, 10, 50, .28)
+    }
+
+    .cat h3 {
+      margin: 10px 0 0;
+      font-size: 18px
+    }
+
+    .cat p {
+      margin: .4rem 0 0;
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 12px;
+      background: #f6f5ff;
+      border: 1px solid rgba(20, 10, 40, .08)
+    }
+
+    /* === Carousel === */
+    .carousel {
+      position: relative;
+      margin-top: 12px
+    }
+
+    .track {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 6px 2px 10px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .prod {
+      scroll-snap-align: start;
+      flex: 0 0 clamp(210px, 26vw, 260px);
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(20, 10, 40, .06);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .15s ease;
+    }
+
+    .prod:hover {
+      transform: translateY(-2px)
+    }
+
+    .prod img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: #f6f6ff
+    }
+
+    .prod .pad {
+      padding: 12px
+    }
+
+    .prod .title {
+      font-weight: 800
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 8px
+    }
+
+    .price {
+      font-weight: 800
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--ring);
+      background: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--ring);
+      background: #fff;
+      box-shadow: var(--shadow);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .arrow.left {
+      left: -6px
+    }
+
+    .arrow.right {
+      right: -6px
+    }
+
+    /* === Schedule, Contact, Footer === */
+    .schedule {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .event {
+      background: #fff;
+      border: 1px solid rgba(20, 10, 40, .06);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: var(--shadow)
+    }
+
+    .event strong {
+      display: block;
+      font-size: 16px
+    }
+
+    .event small {
+      color: var(--muted)
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 16px;
+      border: 1px solid rgba(20, 10, 40, .06);
+      box-shadow: var(--shadow)
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #241733;
+      background: #fff;
+      border: 1px solid var(--ring);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    footer {
+      color: #d9cfff;
+      font-size: 14px;
+      padding: 40px 0 70px;
+      text-align: center
+    }
+
+    @media (max-width: 980px) {
+      .schedule {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav ul {
+        display: none
+      }
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 60;
+      display: none;
+      background: #fff;
+      border: 1px solid var(--ring);
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+      max-width: 260px;
+      color: #2a1f35;
+    }
+
+    .toast.show {
+      display: block;
+      animation: pop .18s ease-out
+    }
+
+    @keyframes pop {
+      from {
+        transform: translateY(6px);
+        opacity: 0
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header class="wrap">
+    <div class="nav" id="nav">
+      <a class="brand" href="#top" aria-label="The Void Box home">
+        <img class="logo" src="./SRC/void_logo.png" alt="VOIDBOX LOGO" /></img>
+        <div class="brand-name">The Void Box</div>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#schedule">Where to Find Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#shop">Browse</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Local Kid-made jewelry, keychains & prints!</h1>
+
+      <div class="hero-banner">
+        <div class="hero-frame">
+          <img class="hero-img" src="https://i.imgur.com/utbM8ga.jpeg" alt="Crafts table with beads and creations">
+        </div>
+        <img class="mascot" src="https://i.imgur.com/hHMhJdt.png" alt="Mascot">
+      </div>
+
+      <p>Everything here is designed and strung by a young artist who loves beads and color. Every Purchase helps a kid
+        grow her first business!</p>
+
+      <div class="buttons">
+        <a class="cta" href="#shop">✨ Shop</a>
+        <a class="cta" href="#schedule">📍 Find Our Table</a>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop">
+      <h2>Shop</h2>
+      <p class="lead" style="color:#efe9ff">Here’s a peek at what we sell at pop-up markets. Stock changes often—follow
+        us below for drops!</p>
+
+      <!-- Category cards -->
+      <div class="cats" id="categories" style="margin-top:12px">
+        <article class="cat" data-cat="jewelry">
+          <img class="thumb" src="https://i.imgur.com/XXc5Xd2.png" alt="Colorful beaded bracelets" />
+          <h3>Jewelry</h3>
+          <p>Bracelets, chokers and tiny rings made with bright glass and acrylic beads. Sized for kids, comfy for all.
+          </p>
+        </article>
+        <article class="cat" data-cat="keycharms">
+          <img class="thumb" src="https://i.imgur.com/arjsUYZ.png" alt="Keychain charms" />
+          <h3>Keychains / Charms</h3>
+          <p>Clip-on cuteness for backpacks, zipper pulls, and keys. Mix and match charms, letters, and colors.</p>
+        </article>
+        <article class="cat" data-cat="prints">
+          <img class="thumb" src="./SRC/OUTOFSTOCK.png" alt="Assorted prints" />
+          <h3>Prints</h3>
+          <p>Small, colorful prints that brighten binders, lockers, and bedroom walls.</p>
+        </article>
+      </div>
+
+      <!-- Carousel -->
+      <div class="carousel">
+        <button class="arrow left" aria-label="Scroll left" data-dir="-1">◀</button>
+        <div class="track" id="track" role="list" aria-label="Items carousel"></div>
+        <button class="arrow right" aria-label="Scroll right" data-dir="1">▶</button>
+      </div>
+      <p class="card" style="margin-top:10px">Online checkout is coming soon!</p>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule">
+      <h2>Where to Find Us</h2>
+      <div class="schedule">
+        <div class="event"><strong>Sat, Oct 18 — Children's Entrepreneur Market</strong><small>12:00pm–3:00pm •  The Mid-South Maze • Voidbox Booth</small></div>
+        <div class="event"><strong>Mon, Nov 17 — Collierville Fall Children's Business Fair</strong><small>1:30pm–4:30pm • Mid-South Gifted Academy • Voidbox Booth</small></div>
+        <div class="event"><strong>Sat, Nov 9 — Maker Mini-Fair</strong><small>1:30pm–4:30pm • Oak Street Gym • Near
+            the stage</small></div>
+        <div class="event"><strong>Sat, Dec 7 — Holiday Craft Market</strong><small>9:30am–1:30pm • City Library Atrium
+            • Sparkle Row</small></div>
+      </div>
+    </section>
+
+    <!-- CONTACT / SOCIALS -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card socials">
+
+<a class="icon" href="https://www.tiktok.com/@the.void_nebbie" aria-label="TikTok">
+  <img src="https://www.tiktok.com/favicon.ico" alt="TikTok" width="24" height="24">
+</a>
+
+<a class="icon" href="https://www.twitch.tv/theend_ofthevoid" aria-label="Twitch">
+  <img src="https://www.twitch.tv/favicon.ico" alt="Twitch" width="24" height="24">
+</a>
+
+<a class="icon" href="https://toyhou.se/Local_Frog" aria-label="Toyhouse">
+  <img src="https://toyhou.se/img/favicon.ico" alt="Toyhouse" width="24" height="24">
+</a>
+
+        <span style="align-self:center; color:#6b5c7e; font-size:14px">Questions about sizes/colors? Email us at <a
+            href="mailto:hello@voidbox.local">support@voidbox.com</a>.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="card" style="text-align:center; color:#2a1f35">
+      <strong style="font-family: Fredoka">The Void Box</strong>
+      <div>Kid-made jewelry, keychains & prints. Thanks for supporting young creators. ✨</div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // ===== NAV =====
+    const nav = document.getElementById('nav');
+    let lastY = window.scrollY;
+    let dimmed = false;
+
+    function updateNav() {
+      const y = window.scrollY;
+      const scrollingDown = y > lastY + 2;
+      const scrollingUp = y < lastY - 2;
+
+      if (scrollingDown && !dimmed) {
+        nav.classList.add('dim'); dimmed = true;
+      } else if (scrollingUp && dimmed) {
+        nav.classList.remove('dim'); dimmed = false;
+      }
+      lastY = y;
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    nav.addEventListener('mouseenter', () => nav.classList.remove('dim'));
+    nav.addEventListener('mouseleave', () => { if (window.scrollY > 8) nav.classList.add('dim'); });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    const toast = document.getElementById('toast');
+    const bagKey = 'vb-bag';
+    const showToast = (msg) => { toast.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2000); };
+    const getBag = () => { try { return JSON.parse(localStorage.getItem(bagKey) || '[]'); } catch { return []; } };
+    const setBag = (items) => localStorage.setItem(bagKey, JSON.stringify(items));
+
+    // ===== SHOP data =====
+    const DATA = {
+      jewelry: [
+        { t: 'Galaxy Bracelet', p: '$8', img: './SRC/OUTOFSTOCK.png', alt: 'Purple beaded bracelet' },
+        { t: 'Name Bracelet', p: '$8', img: './SRC/OUTOFSTOCK.png', alt: 'Letter bead bracelet' },
+        { t: 'Star Choker', p: '$15', img: './SRC/OUTOFSTOCK.png', alt: 'Beaded star choker' },
+        { t: 'Friendship', p: '$8', img: './SRC/OUTOFSTOCK.png', alt: 'Matching friendship bracelets' },
+        { t: 'Necklace', p: '$15', img: './SRC/OUTOFSTOCK.png', alt: 'Colorful bead necklace' }
+      ],
+      keycharms: [
+        { t: 'Star Keychain', p: '$6', img: './SRC/OUTOFSTOCK.png', alt: 'Star charm keychain' },
+        { t: 'Phone Strap', p: '$7', img: './SRC/OUTOFSTOCK.png', alt: 'Bead phone strap' },
+        { t: 'Name Keychain', p: '$8', img: './SRC/OUTOFSTOCK.png', alt: 'Letter bead keychain' },
+        { t: 'Fruit Charms', p: '$6', img: './SRC/OUTOFSTOCK.png', alt: 'Fruit charms' }
+      ],
+      prints: [
+        { t: 'Cat Doodle', p: '$6', img: './SRC/OUTOFSTOCK.png', alt: 'Cute small cat art print' },
+        { t: 'Space', p: '$6', img: './SRC/OUTOFSTOCK.png', alt: 'Space print' },
+        { t: 'Nebula', p: '$5', img: './SRC/OUTOFSTOCK.png', alt: 'Nebula print' },
+        { t: 'The Void', p: '$4', img: './SRC/OUTOFSTOCK.png', alt: 'Print of the void' }
+      ]
+    };
+
+    const track = document.getElementById('track');
+
+    function renderItems(cat) {
+      track.innerHTML = '';
+      DATA[cat].forEach(item => {
+        const el = document.createElement('article');
+        el.className = 'prod'; el.setAttribute('role', 'listitem');
+        el.innerHTML = `
+        <img src="${item.img}" alt="${item.alt}">
+        <div class="pad">
+          <div class="title">${item.t}</div>
+          <div class="price-row">
+            <div class="price">${item.p}</div>
+            <button class="btn add">Out of Stock</button>
+          </div>
+        </div>`;
+        track.appendChild(el);
+      });
+      bindAddButtons();
+    }
+
+    function bindAddButtons() {
+      track.querySelectorAll('.add').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.prod');
+          const title = card.querySelector('.title')?.textContent?.trim();
+          const price = card.querySelector('.price')?.textContent?.trim();
+          const img = card.querySelector('img')?.getAttribute('src');
+          const items = getBag(); items.push({ title, price, img }); setBag(items);
+          showToast(`Added “${title}” to your list. Show this at the table!`);
+        });
+      });
+    }
+
+    // Category card clicks
+    document.querySelectorAll('#categories .cat').forEach(cat => {
+      cat.addEventListener('click', () => {
+        document.querySelectorAll('#categories .cat').forEach(c => c.classList.remove('active'));
+        cat.classList.add('active');
+        renderItems(cat.dataset.cat);
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      });
+    });
+
+    document.querySelectorAll('.arrow').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const dir = Number(btn.dataset.dir);
+        const step = track.clientWidth * 0.9;
+        track.scrollBy({ left: step * dir, behavior: 'smooth' });
+      });
+    });
+
+    const defaultCat = document.querySelector('#categories .cat[data-cat="jewelry"]');
+    defaultCat.classList.add('active');
+    renderItems('jewelry');
+
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') track.scrollBy({ left: 200, behavior: 'smooth' });
+      if (e.key === 'ArrowLeft') track.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>
